@@ -3,6 +3,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class ToDoItem(models.Model):
@@ -20,6 +21,7 @@ class ToDoItem(models.Model):
 	date_created = models.DateTimeField()
 	completed = models.BooleanField(default=False)
 	priority = models.IntegerField(choices=PRIORITY_CHOICES)
+	user = models.ForeignKey(User)
 	
 	def __unicode__(self):
 		return self.description

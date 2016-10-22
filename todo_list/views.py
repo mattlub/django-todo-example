@@ -8,19 +8,29 @@ from .models import ToDoItem
 
 def index(request):
 	#import pdb; pdb.set_trace()
+	
+	if not request.user:
+		return HttpResponse("please login!")
+	
+	user = request.user
+	
+	# if just added an item:
 	if request.method == 'POST':
+	# TODO: think about priority
 		new_item = ToDoItem(
 			description=request.POST['description'],
 			priority=2,
-			date_created=timezone.now()
+			date_created=timezone.now(),
+			user=user,
 		)
 		new_item.save()
 		
 		return HttpResponseRedirect("/")
-	
-	items = ToDoItem.objects.all().order_by('-date_created')
+
+	items = ToDoItem.objects.filter(user=user).order_by('-date_created')
 	context = {
 		'items': items,
+		'user': user,
 	}
 	return render(request, "todo_list/index.html", context)
 
