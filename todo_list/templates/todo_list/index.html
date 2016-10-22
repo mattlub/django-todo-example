@@ -1,0 +1,27 @@
+<form action="" method="post">
+
+{% csrf_token %}
+    <input type="text" name="description" value="" />
+<input type="submit" value="Add" />
+
+</form>
+
+{% if items %}
+
+	<ul>
+	{% for item in items %}
+		<li>
+			<div>
+				<label>{{ item.description }}</label>
+				<label>{{ item.priority }}</label>
+				<label>{{ item.date_created }}</label>
+			</div>
+		</li>
+	{% endfor %}
+	</ul>
+	
+{% else %}
+	
+	<p>Nothing to do!</p>
+	
+{% endif %}
