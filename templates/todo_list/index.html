@@ -1,4 +1,7 @@
-<p>Hello, {{ user.username }}!</p>
+{% extends 'base.html' %}
+
+
+{% block content %}
 
 <form action="" method="post">
 
@@ -15,8 +18,10 @@
 		<li>
 			<div>
 				<label>{{ item.description }}</label>
+				<!--
 				<label>{{ item.priority }}</label>
 				<label>{{ item.date_created }}</label>
+				-->
 			</div>
 		</li>
 	{% endfor %}
@@ -27,3 +32,4 @@
 	<p>Nothing to do!</p>
 	
 {% endif %}
+{% endblock content %}

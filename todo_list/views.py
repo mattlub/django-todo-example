@@ -9,7 +9,7 @@ from .models import ToDoItem
 def index(request):
 	#import pdb; pdb.set_trace()
 	
-	if not request.user:
+	if not request.user or not request.user.is_authenticated:
 		return HttpResponse("please login!")
 	
 	user = request.user
