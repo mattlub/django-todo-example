@@ -28,6 +28,12 @@ def create_todo_item(description, days=0, priority=2):
 		
 class ToDoItemViewTests(TestCase):
 	
+	def test_index_view_with_no_login(self):
+		"""
+		index view should return appropriate message if not logged in
+		"""
+		# TODO
+	
 	def test_index_view_with_no_items(self):
 		"""
 		index view should return appropriate message if no to do items

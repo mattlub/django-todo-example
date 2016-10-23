@@ -1,0 +1,10 @@
+<div class="navbar">
+
+	{% if user.is_authenticated %}
+		<span>Hello, {{ user.username }}!</span>
+		<a href=''>logout</a>
+	{% else %}
+		<span>Hello, please <a href=''>login!</a></span>
+	{% endif %}
+	
+</div>

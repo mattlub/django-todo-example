@@ -3,7 +3,9 @@
 
 {% block content %}
 
-<form action="" method="post">
+<h2>Your To-Do list:</h2>
+
+<form action="." method="post">
 
 {% csrf_token %}
     <input type="text" name="description" value="" />
