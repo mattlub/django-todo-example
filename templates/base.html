@@ -1,0 +1,16 @@
+<head>
+	{% block title %} {% endblock title %}
+</head>
+
+<body>
+
+	{% if user.is_authenticated %}
+		<p>Hello, {{ user.username }}!</p>
+	{% else %}
+		<p>Hello, please login!</p>
+	{% endif %}
+
+	{% block content %}
+	{% endblock content %}
+	
+</body>
