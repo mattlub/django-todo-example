@@ -2,7 +2,69 @@ body {
 	font-family: Helvetica;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 30px;
+}
+
+.content-container {
+	padding-top: 20px;
+	width: 90%;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #ee99ee;
+	margin:auto;
+	/*
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	*/
+}
+
+.todo-table, .todo-add {
+	width: 90%;
+	margin:auto;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+
+.remove-button {
+	vertical-align: top;
+	width: 20px;
+}
+
+.description {
+	width: 70%;
+}
+
+.created {
+	width: 30%
+}
+
 .navbar {
 	width: 100%;
 	background-color: #eeeeee;
+}
+
+/* media queries
+--------------------------- */
+
+
+@media (min-width: 800px) {
+
+	.content-container {
+		width: 720px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
 }

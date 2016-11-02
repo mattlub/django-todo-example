@@ -14,20 +14,30 @@ def index(request):
 	
 	user = request.user
 	
-	# if just added an item:
+	# if POST request:
 	if request.method == 'POST':
-	# TODO: think about priority
-		new_item = ToDoItem(
-			description=request.POST['description'],
-			priority=2,
-			date_created=timezone.now(),
-			user=user,
-		)
-		new_item.save()
-		
-		return HttpResponseRedirect("/")
+	
+		# import pdb; pdb.set_trace()
 
-	items = ToDoItem.objects.filter(user=user).order_by('-date_created')
+		if request.POST.get('class', None) == "Add":
+			# TODO: think about priority
+			new_item = ToDoItem(
+				description=request.POST['description'],
+				priority=2,
+				date_created=timezone.now(),
+				user=user
+			)
+			new_item.save()
+			return HttpResponseRedirect("/")
+			
+		elif request.POST.get('class', None) == "Remove":
+			completed_item = ToDoItem.objects.get(id=request.POST['id'])
+			completed_item.completed = True 
+			completed_item.save()
+			return HttpResponseRedirect("/")
+			
+	# else not POST request
+	items = ToDoItem.objects.filter(user=user, completed=False).order_by('-date_created')
 	context = {
 		'items': items,
 		'user': user,

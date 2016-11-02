@@ -1,37 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block script %}
+	<script src="{% static 'scripts/todo.js' %}"></script>
+{% endblock script %}
 
 {% block content %}
-
-<h2>Your To-Do list:</h2>
-
-<form action="." method="post">
-
-{% csrf_token %}
-    <input type="text" name="description" value="" />
-<input type="submit" value="Add" />
-
-</form>
-
-{% if items %}
-
-	<ul>
-	{% for item in items %}
-		<li>
-			<div>
-				<label>{{ item.description }}</label>
-				<!--
-				<label>{{ item.priority }}</label>
-				<label>{{ item.date_created }}</label>
-				-->
-			</div>
-		</li>
-	{% endfor %}
-	</ul>
+	<h2>Your To-Do list:</h2>
 	
-{% else %}
+	<div class="todo-add">
+		<form action="." method="post">
+
+		{% csrf_token %}
+		<input type="text" name="description" value="" />
+		<input type="submit" name="class" value="Add" />
+
+		</form>
+	</div>
+
+	{% if items %}
+		<table class="todo-table">
+			<tbody>
+				{% for item in items %}
+					<tr class="todo-item">
+						<td class="remove-button" id="{{ item.id }}">X</td>
+						<td class="description">
+							<label>{{ item.description }}</label>
+						</td>
+						<td class="created">{{ item.date_created }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+	{% else %}
 	
-	<p>Nothing to do!</p>
+		<p>Nothing to do!</p>
 	
-{% endif %}
+	{% endif %}
 {% endblock content %}
