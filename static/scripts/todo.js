@@ -20,14 +20,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	var remove_item = function(event) {
 		var csrftoken = getCookie('csrftoken');
 		var item = this;
-		var info = {
-			"class": "Remove",
-			"id": item.id
-		};
+		var content = "class=Remove&id=" + item.id;
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", ".");
 		xhr.setRequestHeader("X-CSRFToken", csrftoken);
-		xhr.send(info);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send(content);
 	};
   
 	var remove_buttons = document.getElementsByClassName("remove-button");

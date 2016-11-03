@@ -33,13 +33,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 td, th {
-  border: 1px solid #999;
-  padding: 0.5rem;
+	border: 1px solid #999;
+	padding: 0.5rem;
 }
 
 .remove-button {
 	vertical-align: top;
 	width: 20px;
+	cursor: pointer;
 }
 
 .description {
